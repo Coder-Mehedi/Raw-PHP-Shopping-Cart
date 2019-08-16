@@ -1,0 +1,33 @@
+.flex {
+	display: flex;
+}
+
+.btn-floating {
+	border-radius: 10%;
+	width: 55px;
+	text-align: center;
+}
+
+.action {
+	display: flex;
+}
+.action .quantity {
+	width: 50%;
+	margin-left: 2%;
+}
+
+.action .quantity input {
+	width: 35%;
+	text-align: center;
+	border: none;
+}
+
+.checkout-btn {
+	margin-top: 15px;
+}
+
+.nothing {
+	border: 2px solid grey;
+	padding: 10px 0px;
+	
+}
