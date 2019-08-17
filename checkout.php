@@ -11,10 +11,12 @@ session_start();
  	<h1 class="center-align">Payment</h1>
  	<div class="row">
  		<div class="input-field col s6 offset-s3">
-		    <form>
+		    <form method="POST" action="thanks.php?action=completeorder">
 	        	<label for="textarea1">Address</label>
 				<textarea id="textarea1" class="materialize-textarea" required="true"></textarea>
-				<label>
+		      	<label>Mobile Number</label>
+		      	<input type="text" name="number">
+		      	<label>
 			        <input type="checkbox" id="cashOnDelivery" />
 			        <span>Cash On Delivery</span>
 		      	</label>
@@ -22,11 +24,9 @@ session_start();
 					<button type="submit" name="final_submit" class="btn green darken-2" id="proceed" disabled="true">Proceed</button>
 				</div>
 		    </form>
-	</div>
+		</div>
   	</div>
         
- 		</form>
- 	</div>
  <?php endif ?>
 
  <?php include_once 'templates/footer.php'; ?>

@@ -15,7 +15,6 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 session_start();
 $product_ids = [];
-// session_destroy();
 
 if(isset($_POST['add_to_cart'])){
   if(!isset($_SESSION['shopping_cart'])) {
@@ -44,13 +43,7 @@ if(isset($_POST['add_to_cart'])){
     }
   }
 }
-function pp($array) {
-  echo '<pre>';
-  print_r($array);
-  echo '</pre>';
-}
-// pp($product_ids);
-// pp($_SESSION);
+
  ?>
 
 <?php include_once 'templates/header.php' ?>
