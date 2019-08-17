@@ -1,6 +1,7 @@
 <?php 
 session_start();
 $total = 0;
+$_SESSION['quantity'] = 0;
 
 if($_GET['action'] == 'delete'){
 	foreach ($_SESSION['shopping_cart'] as $key => $product) {
@@ -39,6 +40,7 @@ if($_GET['action'] == 'delete'){
 				<td><a class="btn red" href="cart.php?action=delete&id=<?php echo $product['id']; ?>">Remove</a></td>
 			</tr>
 			<?php $total += $product['quantity'] * $product['price']; ?>
+			<?php $_SESSION['quantity'] += $product['quantity']; ?>
 		<?php endforeach; ?>
 			<tr>
 				<td colspan="3" style="text-align: right;">Grand Total:</td>
@@ -46,7 +48,7 @@ if($_GET['action'] == 'delete'){
 			</tr>
 		</table>
 		<div class="checkout-btn center">
-			<a href="#" class="btn btn-large green">Checkout</a>
+			<a href="/shopping_cart/checkout.php" class="btn btn-large green">Checkout</a>
 		</div>
 		
 		<?php else: ?>

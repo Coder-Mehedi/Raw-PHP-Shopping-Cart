@@ -4,7 +4,7 @@
 
 .btn-floating {
 	border-radius: 10%;
-	width: 55px;
+	width: 80px;
 	text-align: center;
 }
 
@@ -12,7 +12,7 @@
 	display: flex;
 }
 .action .quantity {
-	width: 50%;
+	width: 40%;
 	margin-left: 2%;
 }
 
@@ -31,3 +31,8 @@
 	padding: 10px 0px;
 	
 }
+
+.site-name {
+	margin-left: 20px;
+}
+

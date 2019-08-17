@@ -65,7 +65,7 @@ function pp($array) {
           <div class="card-image">
             <img src="<?php echo $product['image']; ?>">
             <span class="card-title"></span>
-            <div class="btn-floating halfway-fab"><?php echo $product['price']; ?></div>
+            <div class="btn-floating halfway-fab">৳<?php echo $product['price']; ?></div>
           </div>
           <div class="card-content">
             <h6><?php echo substr($product['name'], 0, 100) . " ..."; ?></h6>
@@ -73,7 +73,7 @@ function pp($array) {
           <div class="action">
             <div class="quantity">
               <label>Quantity:</label>
-              <input type="number" name="quantity" value="1" placeholder="Quantity" />
+              <input type="number" name="quantity" value="1" />
             </div>
             <input type="hidden" name="name" value="<?php echo $product['name']; ?>">
             <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
