@@ -4,7 +4,13 @@
 <?php 
 foreach ($_SESSION['shopping_cart'] as $product):
   $_SESSION['quantity'] += $product['quantity'];
-endforeach; 
+endforeach;
+
+$email = $_SESSION['email'];
+$sql = "SELECT id, email FROM account_info WHERE email='$email'";
+$result = mysqli_query($conn, $sql);
+$_SESSION['user_info'] = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$_SESSION['user_id'] = $_SESSION['user_info'][0]['id'];
 
 ?>
 
@@ -31,6 +37,9 @@ endforeach;
             <a href="/shopping_cart/accounts/login.php">Login</a>
           </li>
         <?php else: ?>
+          <li>
+            <a href="/shopping_cart/accounts/profile.php">My Profile</a>
+          </li>
           <li>
             <a href="/shopping_cart/accounts/logout.php">Logout</a>
           </li>

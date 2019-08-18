@@ -11,7 +11,7 @@ session_start();
 
  ?>
 <?php include_once 'templates/header.php'; ?>
- <?php if ($_SESSION['loggedIn']): ?>
+ <?php if ($_SESSION['loggedIn'] && $_SESSION['shopping_cart']): ?>
  	<h1 class="center-align">Payment</h1>
  	<div class="row">
  		<div class="input-field col s6 offset-s3">
@@ -33,7 +33,8 @@ session_start();
 		    </form>
 		</div>
   	</div>
-        
+ 	<?php elseif ($_SESSION['loggedIn'] && !$_SESSION['shopping_cart']): ?>
+ 		<h1 class="center-align">You have nothing in cart</h1>
  <?php endif ?>
 
  <?php include_once 'templates/footer.php'; ?>
