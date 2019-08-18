@@ -1,10 +1,13 @@
 <?php 
 session_start();
+
+	
 	if(isset($_SESSION['email'])) {
 		$_SESSION['loggedIn'] = true;
 	} else {
 		header('Location: /shopping_cart/accounts/signup.php');
 	}
+
 	
  ?>
 <?php include_once 'templates/header.php'; ?>

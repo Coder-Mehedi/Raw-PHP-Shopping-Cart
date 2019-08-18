@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include_once 'config/create_db.php';
 include_once 'config/db_connect.php';
 include_once 'config/create_table.php';
@@ -13,8 +13,9 @@ $result = mysqli_query($conn, $sql);
 $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 // print_r($products);
 
-session_start();
+
 $product_ids = [];
+
 
 if(isset($_POST['add_to_cart'])){
   if(!isset($_SESSION['shopping_cart'])) {
@@ -24,6 +25,8 @@ if(isset($_POST['add_to_cart'])){
       'price' => $_POST['price'],
       'quantity' => $_POST['quantity']
     ];
+    header('Location: cart.php');
+    header('Location: index.php');
   }else {
     $count = count($_SESSION['shopping_cart']);
     $product_ids = array_column($_SESSION['shopping_cart'], 'id');
@@ -34,12 +37,16 @@ if(isset($_POST['add_to_cart'])){
       'price' => $_POST['price'],
       'quantity' => $_POST['quantity'],
     ];
+    header('Location: cart.php');
+    header('Location: index.php');
     } else {
       for ($i=0; $i < count($product_ids); $i++) { 
         if ($product_ids[$i] == $_GET['id']){
           $_SESSION['shopping_cart'][$i]['quantity'] += $_POST['quantity'];
         }
       }
+      header('Location: cart.php');
+      header('Location: index.php');
     }
   }
 }

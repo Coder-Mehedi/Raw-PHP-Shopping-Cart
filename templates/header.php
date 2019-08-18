@@ -1,4 +1,13 @@
 <?php session_start(); ?>
+<?php $_SESSION['quantity'] = 0; ?>
+
+<?php 
+foreach ($_SESSION['shopping_cart'] as $product):
+  $_SESSION['quantity'] += $product['quantity'];
+endforeach; 
+
+?>
+
 
 
  <!DOCTYPE html>
@@ -27,7 +36,7 @@
           </li>
         <?php endif ?>
         <li>
-        	<a href="/shopping_cart/cart.php" class="waves-effect waves-light btn">Go to Cart <i class="material-icons right">shopping_cart</i></a></li>
+        	<a href="/shopping_cart/cart.php" class="waves-effect waves-light btn">Go to Cart <i class="material-icons right">shopping_cart</i><span class="item-count"><?php echo $_SESSION['quantity']; ?></span></a></li>
       </ul>
     </div>
   </nav>

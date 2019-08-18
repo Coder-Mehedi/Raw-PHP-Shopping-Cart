@@ -3,13 +3,32 @@
 <?php session_start(); ?>
 
 
+<?php 
+function validate_phone_number($phone) {
+	     // Allow +, - and . in phone number
+	     $filtered_phone_number = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
+	     // Remove "-" from number
+	     $phone_to_check = str_replace("-", "", $filtered_phone_number);
+	     // Check the lenght of number
+	     if (strlen($phone_to_check) < 11 || strlen($phone_to_check) > 14) {
+	        return false;
+	     } else {
+	       return true;
+	     }
+	}
+	?>
+
 <?php if(isset($_POST['final_submit'])): ?>
-	<?php if($_GET['action'] == 'completeorder'): ?>
-		<h2 class="center-align">Successfully Order Placed</h2>
-		<p class="center-align">You will redirect in Homepage In <span id="time">5</span> Seconds</p>
+		<?php $number = $_POST['number']; ?>
+		<?php if(validate_phone_number($number)):  ?>
+			<h2 class="center-align">Successfully Order Placed</h2>
+			<p class="center-align">You will redirect in Homepage In <span id="time">5</span> Seconds</p>
+		<?php else: ?>
+			<h2>invalid number</h2>
+	<?php endif; ?>
+<?php endif; ?>
 
-		<?php 
-
+	<?php
 		$email = $_SESSION['email'];
 		$sql = "SELECT id from account_info WHERE email='$email'";
 		$result = mysqli_query($conn, $sql);
@@ -28,8 +47,6 @@
 		?>
 
 		<?php unset($_SESSION['shopping_cart']) ?>
-	<?php endif ?>
-<?php endif ?>
 
 
 <?php include_once 'templates/footer.php'; ?>

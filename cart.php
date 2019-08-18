@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $total = 0;
-$_SESSION['quantity'] = 0;
+
 
 if($_GET['action'] == 'delete'){
 	foreach ($_SESSION['shopping_cart'] as $key => $product) {
