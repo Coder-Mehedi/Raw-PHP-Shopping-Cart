@@ -5,6 +5,7 @@ session_start();
 	} else {
 		header('Location: /shopping_cart/accounts/signup.php');
 	}
+	
  ?>
 <?php include_once 'templates/header.php'; ?>
  <?php if ($_SESSION['loggedIn']): ?>

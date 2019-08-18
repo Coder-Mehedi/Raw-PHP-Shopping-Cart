@@ -32,7 +32,7 @@ if(isset($_POST['add_to_cart'])){
       'id' => $_GET['id'],
       'name' => $_POST['name'],
       'price' => $_POST['price'],
-      'quantity' => $_POST['quantity']
+      'quantity' => $_POST['quantity'],
     ];
     } else {
       for ($i=0; $i < count($product_ids); $i++) { 

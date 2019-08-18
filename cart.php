@@ -32,6 +32,7 @@ if($_GET['action'] == 'delete'){
 				<th>Action</th>
 			</tr>
 			<?php foreach ($_SESSION['shopping_cart'] as $key => $product): ?>
+				
 			<tr>
 				<td><?php echo substr($product['name'], 0, 150); ?></td>
 				<td><?php echo $product['quantity'] ?></td> 
@@ -39,6 +40,7 @@ if($_GET['action'] == 'delete'){
 				<td><?php echo number_format($product['quantity'] * $product['price']) ?></td>
 				<td><a class="btn red" href="cart.php?action=delete&id=<?php echo $product['id']; ?>">Remove</a></td>
 			</tr>
+			
 			<?php $total += $product['quantity'] * $product['price']; ?>
 			<?php $_SESSION['quantity'] += $product['quantity']; ?>
 		<?php endforeach; ?>
@@ -54,7 +56,7 @@ if($_GET['action'] == 'delete'){
 		<?php else: ?>
 			<h4 class="center-align nothing">Nothing In Cart</h4>
  		<?php endif ?>
-
-		
+ 		
  	</div>
+
 <?php include_once 'templates/footer.php' ?>
