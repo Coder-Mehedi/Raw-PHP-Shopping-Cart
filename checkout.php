@@ -8,7 +8,7 @@ session_start();
 		header('Location: /shopping_cart/accounts/signup.php');
 	}
 
-	
+
  ?>
 <?php include_once 'templates/header.php'; ?>
  <?php if ($_SESSION['loggedIn']): ?>
@@ -17,9 +17,12 @@ session_start();
  		<div class="input-field col s6 offset-s3">
 		    <form method="POST" action="thanks.php?action=completeorder">
 	        	<label for="textarea1">Address</label>
-				<textarea id="textarea1" class="materialize-textarea" required="true"></textarea>
+				<input class="materialize-textarea" name="address" required="true" value="<?php echo $_GET['address'] ?? '' ?>"></input>
 		      	<label>Mobile Number</label>
-		      	<input type="text" name="number">
+		      	<input type="text" name="number" required="true" value="<?php echo $_GET['number'] ?? '' ?>">
+		      	<?php if($_GET['error'] == 'invalid_number'): ?>
+		      		<div class="red-text">Invalid Number!!!</div>
+		      	<?php endif ?>
 		      	<label>
 			        <input type="checkbox" id="cashOnDelivery" />
 			        <span>Cash On Delivery</span>
