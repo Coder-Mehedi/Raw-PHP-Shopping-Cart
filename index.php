@@ -25,7 +25,6 @@ if(isset($_POST['add_to_cart'])){
       'price' => $_POST['price'],
       'quantity' => $_POST['quantity']
     ];
-    header('Location: cart.php');
     header('Location: index.php');
   }else {
     $count = count($_SESSION['shopping_cart']);
@@ -37,7 +36,6 @@ if(isset($_POST['add_to_cart'])){
       'price' => $_POST['price'],
       'quantity' => $_POST['quantity'],
     ];
-    header('Location: cart.php');
     header('Location: index.php');
     } else {
       for ($i=0; $i < count($product_ids); $i++) { 
@@ -45,7 +43,6 @@ if(isset($_POST['add_to_cart'])){
           $_SESSION['shopping_cart'][$i]['quantity'] += $_POST['quantity'];
         }
       }
-      header('Location: cart.php');
       header('Location: index.php');
     }
   }

@@ -31,7 +31,7 @@ if($_GET['action'] == 'delete'){
 				<th>Total</th>
 				<th>Action</th>
 			</tr>
-			<?php foreach ($_SESSION['shopping_cart'] as $key => $product): ?>
+			<?php foreach ($_SESSION['shopping_cart'] as $product): ?>
 				
 			<tr>
 				<td><?php echo substr($product['name'], 0, 150); ?></td>

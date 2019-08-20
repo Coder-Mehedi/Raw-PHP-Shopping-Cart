@@ -62,3 +62,55 @@ span.item-count {
 .date {
 	width: 12%;
 }
+
+.all-order {
+	color: white;
+	font-size: 16px;
+}
+
+.all-order tr,.all-order th, .all-order td {
+	border: 1px solid grey;
+}
+.all-order tr {
+	padding: 10px;
+}
+
+.all-order-table {
+	margin-top: 31px;
+    margin-left: 204px;
+}
+
+.all-user {
+	margin-left: 220px;
+	margin-top: 75px;
+	color: white;
+}
+
+.all-order-table th{
+    height: 65px;
+    text-align: center;
+}
+.all-order-table tr {
+	height: 65px;
+}
+
+.quantity {
+	text-align: center;
+}
+
+.center-align {
+	text-align: center;
+}
+
+.p5 {
+	padding: 5px;
+}
+
+.p10 {
+	padding: 10px;
+}
+
+.grand-total {
+	text-align: right;
+	padding-right: 15px;
+}

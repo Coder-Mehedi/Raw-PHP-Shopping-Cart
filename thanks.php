@@ -7,7 +7,8 @@
 function validate_mobile($number) {
     return preg_match('/^[0-9]{11}+$/', $number);
 }
-	?>
+
+?>
 
 <?php if(isset($_POST['final_submit'])): ?>
 		<?php $mobile_number = $_POST['mobile_number']; ?>
@@ -40,12 +41,6 @@ function validate_mobile($number) {
 
 	<?php endif; ?>
 <?php endif; ?>
-
-		 
-
-
-
-		
 
 
 <?php include_once 'templates/footer.php'; ?>
