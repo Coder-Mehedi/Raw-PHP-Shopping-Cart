@@ -5,7 +5,8 @@ session_start();
 	if(isset($_SESSION['email'])) {
 		$_SESSION['loggedIn'] = true;
 	} else {
-		header('Location: /shopping_cart/accounts/signup.php');
+		$_SESSION['login_redirect'] = $_SERVER['PHP_SELF'];
+		header('Location: /shopping_cart/accounts/login.php');
 	}
 
 
@@ -19,7 +20,7 @@ session_start();
 	        	<label for="textarea1">Address</label>
 				<input class="materialize-textarea" name="address" required="true" value="<?php echo $_GET['address'] ?? '' ?>"></input>
 		      	<label>Mobile Number</label>
-		      	<input type="text" name="number" required="true" value="<?php echo $_GET['number'] ?? '' ?>">
+		      	<input type="text" name="mobile_number" required="true" value="<?php echo $_GET['number'] ?? '' ?>">
 		      	<?php if($_GET['error'] == 'invalid_number'): ?>
 		      		<div class="red-text">Invalid Number!!!</div>
 		      	<?php endif ?>

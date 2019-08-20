@@ -17,8 +17,10 @@ if(isset($_POST['submit'])) {
 			if($_FILES['size'] < 50000) {
 				$fileNameNew = uniqid('',  true).".".$fileActualExt;
 				$fileDestination = 'uploads/'.$fileNameNew;
+				echo $fileNameNew;
+				echo $fileDestination;
 				move_uploaded_file($fileTempName, $fileDestination);
-				// header('Location: upload.php?uploadsuccess');
+				header('Location: upload.php?uploadsuccess');
 			} else {
 				echo 'Your file is too big';
 			}

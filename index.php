@@ -82,7 +82,7 @@ if(isset($_POST['add_to_cart'])){
         </div>
       </form>
     </div>
-<?php endforeach ?>
+  <?php endforeach; ?>
 
   </div>
         

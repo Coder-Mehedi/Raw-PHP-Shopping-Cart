@@ -10,9 +10,9 @@ function validate_mobile($number) {
 	?>
 
 <?php if(isset($_POST['final_submit'])): ?>
-		<?php $number = $_POST['number']; ?>
+		<?php $mobile_number = $_POST['mobile_number']; ?>
 		<?php $address = $_POST['address']; ?>
-		<?php if(validate_mobile($number)):  ?>
+		<?php if(validate_mobile($mobile_number)):  ?>
 			<?php 
 			$email = $_SESSION['email'];
 			$sql = "SELECT id from account_info WHERE email='$email'";
@@ -25,7 +25,7 @@ function validate_mobile($number) {
 				$price = $product['price'];
 				$quantity = $product['quantity'];
 
-				$sql = "INSERT INTO ordered_products(product_id, user_id, name, price, quantity) VALUES('$id', '$user_id', '$name', '$price', '$quantity')";
+				$sql = "INSERT INTO ordered_products(product_id, user_id, name, price, quantity, address, mobile_number) VALUES('$id', '$user_id', '$name', '$price', '$quantity', '$address', '$mobile_number')";
 				mysqli_query($conn, $sql);
 			}
 			 ?>

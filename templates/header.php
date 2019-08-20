@@ -12,6 +12,12 @@ $result = mysqli_query($conn, $sql);
 $_SESSION['user_info'] = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $_SESSION['user_id'] = $_SESSION['user_info'][0]['id'];
 
+$user_id = $_SESSION['user_id'];
+
+$sql = "SELECT * FROM ordered_products WHERE user_id='$user_id'";
+$result = mysqli_query($conn, $sql);
+$ordered_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
 ?>
 
 
@@ -39,6 +45,9 @@ $_SESSION['user_id'] = $_SESSION['user_info'][0]['id'];
         <?php else: ?>
           <li>
             <a href="/shopping_cart/accounts/profile.php">My Profile</a>
+          </li>
+          <li>
+            <a href="/shopping_cart/accounts/ordered_product.php">Orders</a>
           </li>
           <li>
             <a href="/shopping_cart/accounts/logout.php">Logout</a>
