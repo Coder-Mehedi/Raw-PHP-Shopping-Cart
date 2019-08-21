@@ -1,4 +1,4 @@
-<?php include_once 'templates/header.php'; ?>
+
 <?php include_once 'config/db_connect.php'; ?>
 <?php session_start(); ?>
 
@@ -9,6 +9,7 @@ function validate_mobile($number) {
 }
 
 ?>
+
 
 <?php if(isset($_POST['final_submit'])): ?>
 		<?php $mobile_number = $_POST['mobile_number']; ?>
@@ -29,11 +30,12 @@ function validate_mobile($number) {
 
 					$sql = "INSERT INTO ordered_products(product_id, user_id, name, price, quantity, address, mobile_number) VALUES('$id', '$user_id', '$name', '$price', '$quantity', '$address', '$mobile_number')";
 					mysqli_query($conn, $sql);
+					unset($_SESSION['shopping_cart']);
 				}
 			}
 			 ?>
 			<h2 class="center-align">Successfully Order Placed</h2>
-			<?php unset($_SESSION['shopping_cart']) ?>
+			
 			<p class="center-align">You will redirect in Homepage In <span id="time">3</span> Seconds</p>
 			
 		<?php else: ?>
@@ -47,7 +49,7 @@ function validate_mobile($number) {
 
 <?php include_once 'templates/footer.php'; ?>
 
-<!-- 
+
 
 <script type="text/javascript">
 	let time = parseInt(document.getElementById('time').innerHTML);
@@ -58,4 +60,4 @@ function validate_mobile($number) {
 		document.location = '/shopping_cart';
 	}
 	},1000)
-</script> -->
+</script>

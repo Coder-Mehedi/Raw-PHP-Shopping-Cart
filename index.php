@@ -9,8 +9,11 @@ include_once 'config/demo_data.php';
 $sql = "SELECT * FROM product_info";
 
 $result = mysqli_query($conn, $sql);
+while($product = mysqli_fetch_assoc($result)) {
+  $products[] = $product; 
+}
 
-$products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+// $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 // print_r($products);
 
 $product_ids = [];
@@ -54,7 +57,11 @@ if(isset($_POST['add_to_cart'])){
  	<h1 style="text-align: center;">Products</h1>
 	
   <div class="row">
+
+
+
   	<?php foreach($products as $product): ?>
+
     <div class="col s12 m3">
       <form method="POST" action="index.php?action=add&id=<?php echo $product['id']; ?>">
         <div class="card hoverable">
@@ -78,7 +85,7 @@ if(isset($_POST['add_to_cart'])){
         </div>
       </form>
     </div>
-  <?php endforeach; ?>
+    <?php endforeach; ?>
 
   </div>
         

@@ -11,14 +11,24 @@ if(isset($_SESSION['email'])){
   $email = $_SESSION['email'];
   $sql = "SELECT id, email FROM account_info WHERE email='$email'";
   $result = mysqli_query($conn, $sql);
-  $_SESSION['user_info'] = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+  while($info = mysqli_fetch_assoc($result)) {
+    $_SESSION['user_info'][] = $info; 
+  }
+
+  // $_SESSION['user_info'] = mysqli_fetch_all($result, MYSQLI_ASSOC);
   $_SESSION['user_id'] = $_SESSION['user_info'][0]['id'];
 
   $user_id = $_SESSION['user_id'];
 
   $sql = "SELECT * FROM ordered_products WHERE user_id='$user_id'";
   $result = mysqli_query($conn, $sql);
-  $ordered_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+  while($order = mysqli_fetch_assoc($result)) {
+    $ordered_products[] = $order; 
+  }
+
+  // $ordered_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
 
