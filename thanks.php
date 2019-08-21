@@ -20,14 +20,16 @@ function validate_mobile($number) {
 			$result = mysqli_query($conn, $sql);
 			$user_id = mysqli_fetch_assoc($result)['id'];
 
-			foreach ($_SESSION['shopping_cart'] as $product) {
-				$id = $product['id'];
-				$name = $product['name'];
-				$price = $product['price'];
-				$quantity = $product['quantity'];
+			if(isset($_SESSION['shopping_cart'])){
+				foreach ($_SESSION['shopping_cart'] as $product) {
+					$id = $product['id'];
+					$name = $product['name'];
+					$price = $product['price'];
+					$quantity = $product['quantity'];
 
-				$sql = "INSERT INTO ordered_products(product_id, user_id, name, price, quantity, address, mobile_number) VALUES('$id', '$user_id', '$name', '$price', '$quantity', '$address', '$mobile_number')";
-				mysqli_query($conn, $sql);
+					$sql = "INSERT INTO ordered_products(product_id, user_id, name, price, quantity, address, mobile_number) VALUES('$id', '$user_id', '$name', '$price', '$quantity', '$address', '$mobile_number')";
+					mysqli_query($conn, $sql);
+				}
 			}
 			 ?>
 			<h2 class="center-align">Successfully Order Placed</h2>
@@ -45,7 +47,7 @@ function validate_mobile($number) {
 
 <?php include_once 'templates/footer.php'; ?>
 
-
+<!-- 
 
 <script type="text/javascript">
 	let time = parseInt(document.getElementById('time').innerHTML);
@@ -56,4 +58,4 @@ function validate_mobile($number) {
 		document.location = '/shopping_cart';
 	}
 	},1000)
-</script>
+</script> -->

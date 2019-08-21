@@ -13,7 +13,6 @@ $result = mysqli_query($conn, $sql);
 $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 // print_r($products);
 
-
 $product_ids = [];
 
 

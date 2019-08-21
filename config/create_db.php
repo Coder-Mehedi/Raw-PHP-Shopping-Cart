@@ -6,7 +6,7 @@ $conn = mysqli_connect('localhost', 'root', 'm3h3d1');
 
 // checking connection
 
-if(!conn) {
+if(!$conn) {
 	die("connection failed" .mysqli_connect_error());
 }
 

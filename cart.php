@@ -3,17 +3,17 @@ session_start();
 $total = 0;
 
 
-if($_GET['action'] == 'delete'){
+if (isset($_GET['action'])) {
+	if($_GET['action'] == 'delete'){
 	foreach ($_SESSION['shopping_cart'] as $key => $product) {
 		if($product['id'] == $_GET['id']) {
 			unset($_SESSION['shopping_cart'][$key]);
 		}
 	}
 }
-
+}
 
 ?>
-
 
 
 
@@ -22,7 +22,8 @@ if($_GET['action'] == 'delete'){
  		<div class="center">
  			<h2>Products In Cart</h2>
  		</div>
- 		<?php if ($_SESSION['shopping_cart']): ?>
+
+ 		<?php if (isset($_SESSION['shopping_cart'])): ?>
  			<table style="width:100%">
 			<tr>
 				<th>Product Name</th>
@@ -52,10 +53,10 @@ if($_GET['action'] == 'delete'){
 		<div class="checkout-btn center">
 			<a href="/shopping_cart/checkout.php" class="btn btn-large green">Checkout</a>
 		</div>
-		
 		<?php else: ?>
 			<h4 class="center-align nothing">Nothing In Cart</h4>
  		<?php endif ?>
+
  		
  	</div>
 

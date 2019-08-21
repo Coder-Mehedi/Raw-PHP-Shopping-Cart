@@ -1,22 +1,26 @@
-<?php session_start(); ?>
+
 <?php $_SESSION['quantity'] = 0; ?>
-
 <?php 
-foreach ($_SESSION['shopping_cart'] as $product):
-  $_SESSION['quantity'] += $product['quantity'];
-endforeach;
+if(isset($_SESSION['shopping_cart'])) {
+    foreach ($_SESSION['shopping_cart'] as $product):
+      $_SESSION['quantity'] += $product['quantity'];
+    endforeach;
+}
+require('config/db_connect.php');
+if(isset($_SESSION['email'])){
+  $email = $_SESSION['email'];
+  $sql = "SELECT id, email FROM account_info WHERE email='$email'";
+  $result = mysqli_query($conn, $sql);
+  $_SESSION['user_info'] = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  $_SESSION['user_id'] = $_SESSION['user_info'][0]['id'];
 
-$email = $_SESSION['email'];
-$sql = "SELECT id, email FROM account_info WHERE email='$email'";
-$result = mysqli_query($conn, $sql);
-$_SESSION['user_info'] = mysqli_fetch_all($result, MYSQLI_ASSOC);
-$_SESSION['user_id'] = $_SESSION['user_info'][0]['id'];
+  $user_id = $_SESSION['user_id'];
 
-$user_id = $_SESSION['user_id'];
+  $sql = "SELECT * FROM ordered_products WHERE user_id='$user_id'";
+  $result = mysqli_query($conn, $sql);
+  $ordered_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
 
-$sql = "SELECT * FROM ordered_products WHERE user_id='$user_id'";
-$result = mysqli_query($conn, $sql);
-$ordered_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
 
@@ -36,7 +40,8 @@ $ordered_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <div class="nav-wrapper">
       <a href="/shopping_cart" class="brand-logo site-name">Shopping Cart</a>
       <ul class="right">
-        <?php if (!$_SESSION['email']): ?>
+        <?php if(!isset($_SESSION['email'])): ?>
+
           <li>
             <a href="/shopping_cart/accounts/signup.php">Sign Up</a>
           <li>

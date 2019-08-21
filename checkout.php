@@ -12,6 +12,7 @@ session_start();
 
  ?>
 <?php include_once 'templates/header.php'; ?>
+<?php if (isset($_SESSION['loggedIn']) && isset($_SESSION['shopping_cart'])): ?>
  <?php if ($_SESSION['loggedIn'] && $_SESSION['shopping_cart']): ?>
  	<h1 class="center-align">Payment</h1>
  	<div class="row">
@@ -21,9 +22,11 @@ session_start();
 				<input class="materialize-textarea" name="address" required="true" value="<?php echo $_GET['address'] ?? '' ?>"></input>
 		      	<label>Mobile Number</label>
 		      	<input type="text" name="mobile_number" required="true" value="<?php echo $_GET['number'] ?? '' ?>">
-		      	<?php if($_GET['error'] == 'invalid_number'): ?>
-		      		<div class="red-text">Invalid Number!!!</div>
-		      	<?php endif ?>
+		      	<?php if(isset($_GET['error'])): ?>
+			      	<?php if($_GET['error'] == 'invalid_number'): ?>
+			      		<div class="red-text">Invalid Number!!!</div>
+			      	<?php endif; ?>
+			      <?php endif; ?>
 		      	<label>
 			        <input type="checkbox" id="cashOnDelivery" />
 			        <span>Cash On Delivery</span>
@@ -37,6 +40,7 @@ session_start();
  	<?php elseif ($_SESSION['loggedIn'] && !$_SESSION['shopping_cart']): ?>
  		<h1 class="center-align">You have nothing in cart</h1>
  <?php endif ?>
+<?php endif ?>
 
  <?php include_once 'templates/footer.php'; ?>
 
